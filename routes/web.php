@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+// Admin Routes
+Route::middleware('auth')
+    ->namespace('Admin')
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        Route::get('/', 'HomeController@index')
+            ->name('home');
+    });
+
+
+// Guest Routes - Fallback (all routes)
+Route::get('{any?}', function () {
+    return view('guest.home');
+})->where('any', '.*');
