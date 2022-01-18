@@ -25,11 +25,12 @@ Route::middleware('auth')
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
-        Route::get('/', 'HomeController@index')
-            ->name('home');
+        Route::get('/', 'HomeController@index')->name('home');
+
+        Route::resource("posts", "PostController");
     });
 
-Route::resource("posts", "PostController");
+/* Route::resource("posts", "PostController"); */
 
 // Guest Routes - Fallback (all routes)
 Route::get('{any?}', function () {
