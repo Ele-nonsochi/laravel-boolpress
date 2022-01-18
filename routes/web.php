@@ -29,6 +29,7 @@ Route::middleware('auth')
             ->name('home');
     });
 
+Route::resource("posts", "PostController");
 
 // Guest Routes - Fallback (all routes)
 Route::get('{any?}', function () {
