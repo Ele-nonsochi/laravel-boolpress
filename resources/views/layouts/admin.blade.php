@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Bool-Blog') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -73,6 +73,8 @@
         </nav>
 
         <main class="py-4">
+            @include('admin.partials.sidebar')
+            
             @yield('content')
         </main>
     </div>

@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
 });
-
+ */
 Auth::routes();
 
-// Admin Routes
 Route::middleware('auth')
     ->namespace('Admin')
     ->name('admin.')
@@ -32,7 +31,6 @@ Route::middleware('auth')
 
 /* Route::resource("posts", "PostController"); */
 
-// Guest Routes - Fallback (all routes)
 Route::get('{any?}', function () {
     return view('guest.home');
-})->where('any', '.*');
+})->where('any', '.*')->name('home');
