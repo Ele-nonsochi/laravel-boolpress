@@ -2,11 +2,10 @@
 
 @section('content')
     <div class="container">
-        <h1>{{$post->title}}</h1>
+        <h1>{{$post->title}} ,  {{$post->category->name}} </h1>
         <p>{{$post->content}}</p>
-
+        
         <a class="btn btn-success" href="{{route('admin.posts.edit', $post->id)}}">Change Post</a>
-
         <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST" class="d-inline-block">
             @csrf
             @method('delete')
