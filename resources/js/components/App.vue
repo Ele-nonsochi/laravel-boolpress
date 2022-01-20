@@ -2,7 +2,7 @@
   <div class="d-flex flex-column">
     <Navbar> </Navbar>
 
-  <div class="container">
+  <!-- <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
           <div v-for="post in postsList" :key="post.id" class="card mt-4 mb-5">
@@ -11,7 +11,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <Post></Post>
 
     <Footer></Footer>
   </div>
@@ -20,9 +21,11 @@
 <script>
 import Navbar from "./partials/Navbar.vue";
 import Footer from "./partials/Footer.vue";
+import Post from "./partials/Post.vue";
+
 export default {
   name: "App",
-  components: { Navbar, Footer },
+  components: { Navbar, Footer,Post },
   data() {
     return {
       title: "Vue page",

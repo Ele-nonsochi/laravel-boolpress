@@ -22,8 +22,17 @@
                 </div>
     
                 
-    
-                <button class="btn btn-primary" type="submit">Add</button>
+                    <div class="form-group">
+                      <label class="form-label">Category</label>
+                      <select name="category_id" class="form-control">
+                        @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    
+                 
+           <button class="btn btn-primary" type="submit">Add</button>
             </div>
 
         </form>

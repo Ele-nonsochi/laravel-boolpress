@@ -22,7 +22,15 @@
                     <label for="field_content" class="form-label">Text</label>
                     <input type="text" class="form-control" name="content" id="field_content" value="{{ old('content') ?? $post->content }}">
                 </div>
-    
+                
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select name="category_id" class="form-control">
+                      @foreach($categories as $category)
+                      <option value="{{$category->id}}">{{$category->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
                 
     
                 <button class="btn btn-primary" type="submit">Add Change</button>

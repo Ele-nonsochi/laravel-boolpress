@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\category;
 
 class PostController extends Controller
 {
@@ -27,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+
+        return view('admin.posts.create',compact("categories"));
     }
 
     /**
@@ -38,11 +41,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        /* $data = $request->all();
-
-        $newPost = Post::create($data);
-        $newPost->save();
-        return redirect()->route('admin.posts.index'); */
+        
         $post = new Post();
         $post->fill($request->all());
         //prendo nella colonna user prendo l'id del utente loggato
@@ -77,9 +76,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        /* $post = Post::findOrFail($id);
-        return view('admin.post.edit', compact('post')); */
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+
+        return view("admin.posts.edit", [
+          "post" => $post,
+          "categories" => $categories
+        ]);
+      /*  return view('admin.posts.edit', compact('post')); */
     }
 
     /**
@@ -104,10 +107,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        /* $post = Post::findOrFail($id);
-        $post->delete();
-
-        return redirect()->route('admin.posts.index'); */
+        
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
