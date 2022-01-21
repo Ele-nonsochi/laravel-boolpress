@@ -1,34 +1,32 @@
 <template>
-<div>
-
-  <h1>
-      {{msg}}
-  </h1>
-
-    <div class="post" v-if="posts.length === 0">
-      Nothing to show
-    </div>
-
-        <div class="div" v-else>
-           <div class="card" v-for="post, i  in posts" :key="i">
-               <h5>{{post.title}}</h5>
-           </div>
-
+    <div class="col mb-5">
+        <div class="card h-100">
+            <div class="card-body p-4">
+                <div class="text-center">
+                    
+                <h5 class="fw-bolder">{{ post.title }}</h5>
+                <span class="bg-secondary rounded-pill p-1 text-light">{{ post.category.name }}</span>
+                <p>{{ post.description }}</p>
+                </div>
+            </div>
+           
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/posts/1">View details</a></div>
+            </div>
         </div>
-</div>
-  
+    </div>
 </template>
 
 <script>
 export default {
-    name: "Post",
+    name: 'Post',
     props: {
-        post: {
-            type: Object,
-            required: true,
-        },
-    },
-};
+        post:{ type: Object }
+         
+         /* require:true, */
+    }
+}
 </script>
 
-<style></style>
+<style>
+</style>

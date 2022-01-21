@@ -118,6 +118,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -233,15 +239,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Post",
+  name: 'Post',
   props: {
     post: {
-      type: Object,
-      required: true
+      type: Object
     }
+    /* require:true, */
+
   }
 });
 
@@ -278,7 +283,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "nav a {\n  color: #76b5e9 !important;\n}", ""]);
+exports.push([module.i, "nav a {\n  color: #082944 !important;\n}", ""]);
 
 // exports
 
@@ -1427,7 +1432,23 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "d-flex flex-column" },
-    [_c("Navbar"), _vm._v(" "), _c("Post"), _vm._v(" "), _c("Footer")],
+    [
+      _c("Navbar"),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3",
+        },
+        _vm._l(_vm.postsList, function (post) {
+          return _c("Post", { key: post.id, attrs: { post: post } })
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c("Footer"),
+    ],
     1
   )
 }
@@ -1562,26 +1583,51 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("\r\n      " + _vm._s(_vm.msg) + "\r\n  ")]),
-    _vm._v(" "),
-    _vm.posts.length === 0
-      ? _c("div", { staticClass: "post" }, [
-          _vm._v("\r\n      Nothing to show\r\n    "),
-        ])
-      : _c(
-          "div",
-          { staticClass: "div" },
-          _vm._l(_vm.posts, function (post, i) {
-            return _c("div", { key: i, staticClass: "card" }, [
-              _c("h5", [_vm._v(_vm._s(post.title))]),
-            ])
-          }),
-          0
-        ),
+  return _c("div", { staticClass: "col mb-5" }, [
+    _c("div", { staticClass: "card h-100" }, [
+      _c("div", { staticClass: "card-body p-4" }, [
+        _c("div", { staticClass: "text-center" }, [
+          _c("h5", { staticClass: "fw-bolder" }, [
+            _vm._v(_vm._s(_vm.post.title)),
+          ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            { staticClass: "bg-secondary rounded-pill p-1 text-light" },
+            [_vm._v(_vm._s(_vm.post.category.name))]
+          ),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.post.description))]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+    ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-footer p-4 pt-0 border-top-0 bg-transparent" },
+      [
+        _c("div", { staticClass: "text-center" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-outline-dark mt-auto",
+              attrs: { href: "/posts/1" },
+            },
+            [_vm._v("View details")]
+          ),
+        ]),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 

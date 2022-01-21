@@ -31,6 +31,13 @@
                       @endforeach
                     </select>
                   </div>
+
+                  <label for="tag" class="form-label">Tag</label>
+                  <select name="tags[]" id="tag" class="form-control" multiple>
+                      @foreach ($tags as $tag)
+                          <option value="{{$tag->id}}" @if ($post->tags->contains($tag)) selected @endif>{{$tag->name}}</option>
+                      @endforeach
+                  </select>
                 
     
                 <button class="btn btn-primary" type="submit">Add Change</button>

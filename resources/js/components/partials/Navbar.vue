@@ -23,6 +23,6 @@ export default {};
 
 <style lang="scss">
 nav a {
-  color: rgb(118, 181, 233) !important;
+  color: rgb(8, 41, 68) !important;
 }
 </style>

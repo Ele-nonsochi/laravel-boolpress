@@ -12,8 +12,14 @@
         </div>
       </div>
     </div> -->
-    <Post></Post>
-
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3">
+            <Post
+            v-for="post in postsList"
+            :key="post.id"
+            :post="post">
+            </Post>
+        </div>
+   
     <Footer></Footer>
   </div>
 </template>
