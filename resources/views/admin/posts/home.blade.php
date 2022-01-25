@@ -50,6 +50,12 @@
                     Crea un post
                 </a>
             </div>
+            <div class="d-flex justify-content-center py-4">
+                {!! $posts->links() !!}
+              </div>
+        </div>
+    
+    </div>
         </div>
     </div>
 </div>
