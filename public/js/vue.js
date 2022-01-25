@@ -1477,37 +1477,41 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "box-link d-flex my-4" }, [
-        _c(
-          "button",
-          {
-            staticClass: "page-link",
-            on: {
-              click: function ($event) {
-                return _vm.callAxios(_vm.currentPage - 1)
+      _c(
+        "div",
+        { staticClass: "box-link justify-content-center d-flex my-4" },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "page-link",
+              on: {
+                click: function ($event) {
+                  return _vm.callAxios(_vm.currentPage - 1)
+                },
               },
             },
-          },
-          [_vm._v("\n          Previus Page\n      ")]
-        ),
-        _vm._v(" "),
-        _c("button", { staticClass: "page-link" }, [
-          _vm._v("\n          " + _vm._s(_vm.currentPage) + "\n      "),
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "page-link",
-            on: {
-              click: function ($event) {
-                return _vm.callAxios(_vm.currentPage + 1)
+            [_vm._v("\n          Previus Page\n      ")]
+          ),
+          _vm._v(" "),
+          _c("button", { staticClass: "page-link" }, [
+            _vm._v("\n          " + _vm._s(_vm.currentPage) + "\n      "),
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "page-link",
+              on: {
+                click: function ($event) {
+                  return _vm.callAxios(_vm.currentPage + 1)
+                },
               },
             },
-          },
-          [_vm._v("\n          Next Page\n      ")]
-        ),
-      ]),
+            [_vm._v("\n          Next Page\n      ")]
+          ),
+        ]
+      ),
       _vm._v(" "),
       _c("Footer"),
     ],

@@ -20,7 +20,7 @@
             </Post>
         </div>
       
-         <div class="box-link d-flex my-4">
+         <div class="box-link justify-content-center d-flex my-4">
 
         <button class="page-link" @click="callAxios(currentPage - 1)">
             Previus Page
