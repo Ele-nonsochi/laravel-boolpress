@@ -124,6 +124,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -137,15 +154,28 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       title: "Vue page",
-      postsList: []
+      postsList: [],
+      currentPage: 1,
+      lastPage: null
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    getData: function getData() {
+      var _this = this;
 
-    window.axios.get("/api/posts").then(function (resp) {
-      _this.postsList = resp.data;
-    });
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      window.axios.get("/api/posts?page=" + page).then(function (resp) {
+        _this.postsList = resp.data.data;
+        _this.currentPage = resp.data.current_page;
+        _this.lastPage = resp.data.last_page;
+      });
+    }
+  },
+  mounted: function mounted() {
+    /* window.axios.get("/api/posts").then((resp) => {
+      this.postsList = resp.data;
+    }); */
+    this.getData();
   }
 });
 
@@ -1446,6 +1476,38 @@ var render = function () {
         }),
         1
       ),
+      _vm._v(" "),
+      _c("div", { staticClass: "box-link d-flex my-4" }, [
+        _c(
+          "button",
+          {
+            staticClass: "page-link",
+            on: {
+              click: function ($event) {
+                return _vm.callAxios(_vm.currentPage - 1)
+              },
+            },
+          },
+          [_vm._v("\n          Previus Page\n      ")]
+        ),
+        _vm._v(" "),
+        _c("button", { staticClass: "page-link" }, [
+          _vm._v("\n          " + _vm._s(_vm.currentPage) + "\n      "),
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "page-link",
+            on: {
+              click: function ($event) {
+                return _vm.callAxios(_vm.currentPage + 1)
+              },
+            },
+          },
+          [_vm._v("\n          Next Page\n      ")]
+        ),
+      ]),
       _vm._v(" "),
       _c("Footer"),
     ],

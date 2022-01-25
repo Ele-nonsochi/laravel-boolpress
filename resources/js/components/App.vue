@@ -12,13 +12,30 @@
         </div>
       </div>
     </div> -->
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3">
             <Post
             v-for="post in postsList"
             :key="post.id"
             :post="post">
             </Post>
         </div>
+      
+         <div class="box-link d-flex my-4">
+
+        <button class="page-link" @click="callAxios(currentPage - 1)">
+            Previus Page
+        </button>
+
+        <button class="page-link">
+            {{currentPage}}
+        </button>
+        
+        <button class="page-link" @click="callAxios(currentPage + 1)">
+            Next Page
+        </button>
+    </div>
+        
+
    
     <Footer></Footer>
   </div>
@@ -36,12 +53,24 @@ export default {
     return {
       title: "Vue page",
       postsList: [],
+      currentPage: 1,
+      lastPage: null,
     };
   },
+  methods: {
+        getData(page = 1) {
+            window.axios.get("/api/posts?page=" + page).then((resp) => {
+                this.postsList = resp.data.data;
+                this.currentPage = resp.data.current_page;
+                this.lastPage = resp.data.last_page;
+            });
+        },
+    },
   mounted() {
-    window.axios.get("/api/posts").then((resp) => {
+    /* window.axios.get("/api/posts").then((resp) => {
       this.postsList = resp.data;
-    });
+    }); */
+    this.getData();
   },
 };
 </script>
