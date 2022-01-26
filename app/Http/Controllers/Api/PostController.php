@@ -19,7 +19,14 @@ class PostController extends Controller
     
           $post["body"] = strlen($body) > 200 ? substr($body, 0, 200) . "..." : $body;
         } */
-    
+        
         return $postsList;
       } 
+
+      public function getPost($id) {
+        $postSingle = Post::where('id', $id)->with("category")
+        ->with("tags")->first();
+
+        return $postSingle;  /* return response()->json($postSingle); */
+     } 
 }

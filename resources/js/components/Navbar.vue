@@ -5,11 +5,17 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto py-4 py-lg-0">
           <li class="nav-item">
-            <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a>
+            <router-link class="nav-link px-lg-3 py-3 py-lg-4" to="/">Home</router-link>
           </li>
 
           <li class="nav-item">
             <a class="nav-link px-lg-3 py-3 py-lg-4" href="login">Login</a>
+          </li>
+          <li class="nav-item">
+              <router-link class="nav-link px-lg-3 py-3 py-lg-4" to="/about">About us</router-link>
+          </li>
+          <li class="nav-item">
+              <router-link class="nav-link px-lg-3 py-3 py-lg-4" to="/contact">Contact</router-link>
           </li>
         </ul>
       </div>
