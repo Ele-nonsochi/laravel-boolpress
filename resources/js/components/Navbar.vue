@@ -17,6 +17,9 @@
           <li class="nav-item">
               <router-link class="nav-link px-lg-3 py-3 py-lg-4" to="/contact">Contact</router-link>
           </li>
+          <li class="nav-item">
+              <router-link class="nav-link px-lg-3 py-3 py-lg-4" to="/posts">Post</router-link>
+          </li>
         </ul>
       </div>
     </div>

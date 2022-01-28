@@ -5,6 +5,7 @@ import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
 import Contact from "./pages/Contact.vue";
 import PostsShow from "./pages/posts/Show.vue";
+import PostsIndex from "./pages/posts/Index.vue";
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,11 @@ const router = new VueRouter({
             path: "/posts/:id",
             name: "posts.show",
             component: PostsShow,
+        },
+        {
+            path: "/posts",
+            name: "posts.index",
+            component: PostsIndex,
         },
     ],
 });

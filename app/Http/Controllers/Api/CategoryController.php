@@ -12,6 +12,6 @@ class CategoryController extends Controller
         /* $categories = Category::All(); */
         $categories = Category::orderBy("name")->get();
 
-        return $categories;
+        /* return $categories; */ return response()->json($categories);
     }
 }

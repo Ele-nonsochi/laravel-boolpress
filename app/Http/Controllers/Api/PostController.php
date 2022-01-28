@@ -10,7 +10,9 @@ use App\category;
 
 class PostController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
+         $category = $request->query("category");
+
          $postsList = Post::with("category")
           ->with("tags")->paginate(4);
        /*  $postsList = Post::All(); */
@@ -19,7 +21,10 @@ class PostController extends Controller
     
           $post["body"] = strlen($body) > 200 ? substr($body, 0, 200) . "..." : $body;
         } */
-        
+        if ($category) {
+          $postsList = $postsList->where("category_id", $category);
+        }
+
         return $postsList;
       } 
 
