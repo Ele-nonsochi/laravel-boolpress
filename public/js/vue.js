@@ -345,6 +345,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -355,6 +369,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       title: "Vue page",
       postsList: [],
+      categoriesList: [],
       currentPage: 1,
       lastPage: null
     };
@@ -369,6 +384,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.currentPage = resp.data.current_page;
         _this.lastPage = resp.data.last_page;
       });
+    },
+    getCategories: function getCategories() {
+      var _this2 = this;
+
+      window.axios.get("/api/categories").then(function (resp) {
+        _this2.categoriesList = resp.data.data;
+      });
     }
   },
   mounted: function mounted() {
@@ -376,6 +398,7 @@ __webpack_require__.r(__webpack_exports__);
       this.postsList = resp.data;
     }); */
     this.getData();
+    this.getCaterogies();
   }
 });
 
@@ -1974,47 +1997,76 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3",
-      },
-      _vm._l(_vm.postsList, function (post) {
-        return _c("Post", { key: post.id, attrs: { post: post } })
-      }),
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "box-link justify-content-center d-flex my-4" }, [
-      _c(
-        "button",
-        {
-          staticClass: "page-link",
-          on: {
-            click: function ($event) {
-              return _vm.getData(_vm.currentPage - 1)
-            },
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-9" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3",
           },
-        },
-        [_vm._v("\n        Previus Page\n    ")]
-      ),
+          _vm._l(_vm.postsList, function (post) {
+            return _c("Post", { key: post.id, attrs: { post: post } })
+          }),
+          1
+        ),
+      ]),
       _vm._v(" "),
-      _c("button", { staticClass: "page-link" }, [
-        _vm._v("\n        " + _vm._s(_vm.currentPage) + "\n    "),
+      _c("div", { staticClass: "col-3" }, [
+        _c("h4", [_vm._v("Categorie disponibili")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          _vm._l(_vm.categoriesList, function (category) {
+            return _c(
+              "li",
+              { key: category.id },
+              [
+                _c("router-link", { attrs: { to: "/" } }, [
+                  _vm._v(_vm._s(category.name)),
+                ]),
+              ],
+              1
+            )
+          }),
+          0
+        ),
       ]),
       _vm._v(" "),
       _c(
-        "button",
-        {
-          staticClass: "page-link",
-          on: {
-            click: function ($event) {
-              return _vm.getData(_vm.currentPage + 1)
+        "div",
+        { staticClass: "box-link justify-content-center d-flex my-4" },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "page-link",
+              on: {
+                click: function ($event) {
+                  return _vm.getData(_vm.currentPage - 1)
+                },
+              },
             },
-          },
-        },
-        [_vm._v("\n        Next Page\n    ")]
+            [_vm._v("\n        Previus Page\n    ")]
+          ),
+          _vm._v(" "),
+          _c("button", { staticClass: "page-link" }, [
+            _vm._v("\n        " + _vm._s(_vm.currentPage) + "\n    "),
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "page-link",
+              on: {
+                click: function ($event) {
+                  return _vm.getData(_vm.currentPage + 1)
+                },
+              },
+            },
+            [_vm._v("\n        Next Page\n    ")]
+          ),
+        ]
       ),
     ]),
   ])
