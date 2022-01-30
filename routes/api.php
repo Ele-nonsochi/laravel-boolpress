@@ -25,3 +25,5 @@ Route::get("/posts/{id}", "Api\PostController@getPost");
 /* Creo la rotta per le categorie */
 
 Route::get("/categories", "Api\CategoryController@index");
+
+Route::get("/categories/{category}", "Api\CategoryController@show");

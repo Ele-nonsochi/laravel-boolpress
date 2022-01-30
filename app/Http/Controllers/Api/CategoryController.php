@@ -14,4 +14,12 @@ class CategoryController extends Controller
 
         /* return $categories; */ return response()->json($categories);
     }
+
+    function show($categoryId) {
+        $category = Category::where("id", $categoryId)
+          ->with(["posts", "posts.category", "posts.user", "posts.tags"])
+          ->first();
+    
+        return $category;
+      }
 }

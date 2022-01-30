@@ -15,7 +15,10 @@
            <h4>Categorie disponibili</h4>
           <ul>
             <li v-for="category of categoriesList" :key="category.id">
-              <router-link  :to="{ name: 'posts.index', query: { category: category.id }}">{{category.name}}</router-link>
+            <!--   <router-link  :to="{ name: 'posts.index', query: { category: category.id }}">{{category.name}}</router-link> -->
+            <router-link :to="{ name: 'category.show', params: { category: category.id },}">
+                {{ category.name }}
+              </router-link>
             </li>
           </ul>
         </div>
