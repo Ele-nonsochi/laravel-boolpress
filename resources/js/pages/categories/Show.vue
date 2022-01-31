@@ -10,6 +10,7 @@
             </Post>
         </div>
      </div>
+     </div>
 </template>
 
 <script>
