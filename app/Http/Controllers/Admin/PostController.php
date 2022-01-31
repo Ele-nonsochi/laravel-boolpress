@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\category;
 use App\Tag;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -49,6 +50,11 @@ class PostController extends Controller
         $post->fill($request->all());
         //prendo nella colonna user prendo l'id del utente loggato
         $post->user_id = Auth::user()->id;
+        //Aggiungo l'immagine
+        if ($request->file("coverImg")) {
+            $post->coverImg = Storage::put("posts", $data["coverImg"]);
+          }
+        /* $post->coverImg = Storage::put("posts", $data["coverImg"]); */
         $post->save();
         //Funzione per aggiungere o eliminare dalla tabella pivot
         $post->tags()->sync($data["tags"]);
@@ -105,13 +111,24 @@ class PostController extends Controller
         /* dump($request->all()); */
         $data = $request->all();
         $post->update($data);
+        $oldImg = $post->coverImg;
         //Lavora con la tabella Pivot
-        $post->tags()->sync($data["tags"]);
-         
+        /* $post->tags()->sync($data["tags"]); */
+        /* Per cancellare l'immagine precedente */
+        if ($request->file("coverImg")) {
+            if($oldImg){Storage::delete($oldImg);}
+
         $post->coverImg = Storage::put("posts", $data["coverImg"]);
+
+        if (key_exists("tags", $data)) {
+            $post->tags()->sync($data["tags"]);
+          }
+
+        $post->save();
 
         return redirect()->route('admin.posts.show', $post->id);
     }
+}
 
     /**
      * Remove the specified resource from storage.

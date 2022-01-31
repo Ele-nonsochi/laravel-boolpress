@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.posts.store') }}" method="post">
+        <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="text-start mt-5">
@@ -14,6 +14,12 @@
                 <div class="mb-3">
                     <label for="field_title" class="form-label">Title</label>
                     <input type="text" class="form-control" name="title" id="field_title">
+                </div>
+
+               
+                <div class="mb-3">
+                  <label for="exampleInputEmai2" class="form-label">Img</label>
+                  <input type="file" class="form-control" name='coverImg' id="exampleInputEmai2" aria-describedby="emailHelp">
                 </div>
                 
                 <div class="mb-3">
@@ -39,7 +45,7 @@
                     </select>
                  
            <button class="btn btn-primary" type="submit">Add</button>
-            </div>
+         </div>
 
         </form>
     </div>

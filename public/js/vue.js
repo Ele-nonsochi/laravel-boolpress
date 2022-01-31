@@ -2438,7 +2438,11 @@ var render = function () {
                           },
                         },
                       },
-                      [_vm._v("\n        " + _vm._s(_vm.post.category.name))]
+                      [
+                        _vm._v(
+                          "\n              " + _vm._s(_vm.post.category.name)
+                        ),
+                      ]
                     )
                   : _vm._e(),
               ],

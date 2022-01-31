@@ -4,7 +4,10 @@
     <div class="container">
         <h1>{{$post->title}} ,  {{$post->category->name}} </h1>
         <p>{{$post->content}}</p>
-       
+        
+        <img src={{ asset("storage/" . $post->coverImg) }} class="img-fluid mb-4"
+        style="max-height: 500px;width: 100%;object-fit: cover;">
+      
        <div class="form-group">
             <strong>Tag</strong>
             <br>

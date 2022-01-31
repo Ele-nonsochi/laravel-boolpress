@@ -15,9 +15,9 @@
                  <router-link :to="{name : 'posts.show' , params : { id : post.id }}"> <h5 class="fw-bolder" >{{ post.title }}</h5>
                      </router-link>   
                 <h5 class="post-subtitle d-flex align-items-center">
-      <router-link v-if="post.category" class="bg-secondary rounded-pill p-1 text-light"
-           :to="{ name: 'posts.index', query: { category: post.category.id },}">
-          {{ post.category.name }}</router-link>
+                <router-link v-if="post.category" class="bg-secondary rounded-pill p-1 text-light"
+                 :to="{ name: 'posts.index', query: { category: post.category.id },}">
+                {{ post.category.name }}</router-link>
                 </h5>
               <!--   <span class="bg-secondary rounded-pill p-1 text-light">{{ post.category.name }}</span> -->
                 <p>{{ post.content }}</p>

@@ -24,7 +24,13 @@ class PostController extends Controller
         if ($category) {
           $postsList = $postsList->where("category_id", $category);
         }
-
+        
+        /* Per aggiungere l'img */
+        
+       /*  $postsList->each(function ($post) {
+          $post->coverImg =  url("/storage/" . $post->coverImg);
+        }); */
+        
         return $postsList;
       } 
 
