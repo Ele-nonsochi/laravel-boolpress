@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    //Relazione one to many
+    //Relazione one to many hvgo'
     public function posts()
     {
         return $this->hasMany('App\Post');
