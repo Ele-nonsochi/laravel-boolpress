@@ -572,19 +572,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      post: []
+      categories: []
     };
   },
   methods: {
     fetchPost: function fetchPost() {
       var _this = this;
 
-      var url = "/api/posts/" + this.$route.params.id;
+      var url = "/api/categories/" + this.$route.params.id;
       window.axios.get(url).then(function (resp) {
-        _this.post = resp.data;
+        _this.category = resp.data;
       });
     }
   },
@@ -2378,25 +2401,83 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card h-100" }, [
-    _c("div", { staticClass: "card-body p-4" }, [
-      _c("div", { staticClass: "text-center" }, [
-        _c("h5", { staticClass: "fw-bolder" }, [
-          _vm._v(_vm._s(_vm.post.title)),
-        ]),
-        _vm._v(" "),
+  return _c("div", { staticClass: "col mb-5" }, [
+    _c("div", { staticClass: "card h-100" }, [
+      _c("div", { staticClass: "card-body p-4" }, [
         _c(
-          "span",
-          { staticClass: "bg-secondary rounded-pill p-1 text-light" },
-          [_vm._v(_vm._s(_vm.post.category.name))]
+          "div",
+          { staticClass: "text-center" },
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: { name: "posts.show", params: { id: _vm.post.id } },
+                },
+              },
+              [
+                _c("h5", { staticClass: "fw-bolder" }, [
+                  _vm._v(_vm._s(_vm.post.title)),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "h5",
+              { staticClass: "post-subtitle d-flex align-items-center" },
+              [
+                _vm.post.category
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "bg-secondary rounded-pill p-1 text-light",
+                        attrs: {
+                          to: {
+                            name: "posts.index",
+                            query: { category: _vm.post.category.id },
+                          },
+                        },
+                      },
+                      [_vm._v("\n        " + _vm._s(_vm.post.category.name))]
+                    )
+                  : _vm._e(),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.post.content))]),
+          ],
+          1
         ),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.post.content))]),
       ]),
+      _vm._v(" "),
+      _vm._m(0),
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-footer p-4 pt-0 border-top-0 bg-transparent" },
+      [
+        _c("div", { staticClass: "text-center" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-outline-dark mt-auto",
+              attrs: { href: "/posts/1" },
+            },
+            [_vm._v("View details")]
+          ),
+        ]),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 

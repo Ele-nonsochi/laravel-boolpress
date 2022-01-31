@@ -3,7 +3,8 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.posts.update', $post->id)}}" method="post">
+        <form action="{{ route('admin.posts.update', $post->id)}}" method="post"
+            enctype="multipart/form-data">
             @csrf
             @method('put')
 
@@ -17,6 +18,12 @@
                     <label for="field_title" class="form-label">Title</label>
                     <input type="text" class="form-control" name="title" id="field_title" value="{{ old('title') ?? $post->title }}">
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label">Choose Image</label>
+                    <input id="name" type="file" class="form-control @error('coverImg') is-invalid @enderror"
+                      name="coverImg" value="{{ $post->coverImg }}" required>
+               </div>
                 
                 <div class="mb-3">
                     <label for="field_content" class="form-label">Text</label>
