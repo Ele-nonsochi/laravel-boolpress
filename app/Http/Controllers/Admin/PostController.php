@@ -101,11 +101,14 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
-    {
+    {   
+        /* dump($request->all()); */
         $data = $request->all();
         $post->update($data);
         //Lavora con la tabella Pivot
         $post->tags()->sync($data["tags"]);
+         
+        $post->coverImg = Storage::put("posts", $data["coverImg"]);
 
         return redirect()->route('admin.posts.show', $post->id);
     }
